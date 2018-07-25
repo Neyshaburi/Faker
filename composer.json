@@ -1,6 +1,6 @@
 {
-    "name": "Neyshaburi/Faker",
-    "description": "Persian fake data package for laravel",
+    "name": "neyshaburi/faker",
+    "description": "Farsi fake data package for laravel 5.2",
     "type": "laravel",
     "license": "MIT",
     "authors": [
