@@ -1,0 +1,19 @@
+{
+    "name": "Neyshaburi/faker",
+    "description": "Persian fake data package for laravel",
+    "type": "laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Neyshaburi",
+            "email": "Neyshaburi.96@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Neyshaburi\\Faker\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
