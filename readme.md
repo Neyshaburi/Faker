@@ -9,7 +9,7 @@ Farsi faker package for laravel . This package is created for testing your proje
 get install package with composer
 
 ```bash
-composer require neyshaburi/faker
+composer require neyshaburi/faker:1.*
 ```
 
 ### Step 2
@@ -48,10 +48,11 @@ Done :)
 | ``` Faker::state() ``` | Return a random state of iran name |
 | ``` Faker::melliCode() ``` | Return a random 10 integer |
 | ``` Faker::word() ``` | Return a random word |
+| ``` Faker::words($count=2) ``` | Return a string random tow ... word |
 | ``` Faker::title() ``` | Return a random title |
 | ``` Faker::sentence() ``` | Return a random sentence |
 | ``` Faker::paragraph() ``` | Return a random paragraph |
-| ``` Faker::paragraphs($count=2) ``` | Return a random two ... paragraphs |
+| ``` Faker::paragraphs($count=2) ``` | Return a string random two ... paragraphs |
 
 ## License
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
