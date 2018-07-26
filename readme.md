@@ -9,7 +9,7 @@ Farsi faker package for laravel . This package is created for testing your proje
 get install package with composer
 
 ```bash
-composer require Neyshaburi/faker
+composer require neyshaburi/faker
 ```
 
 ### Step 2
