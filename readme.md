@@ -41,7 +41,7 @@ Done :)
 | ``` Faker::age($min=10, $max=70) ``` | Return a random you can use $min and $max but thery are nullable |
 | ``` Faker::birthday($from=1315, $to=1387, $split='/') ``` | Return a random birthday date use $sign for replace '/' between year/mounth/day |
 | ``` Faker::date($from=1315, $to=1397, $split='/') ``` | Return a random date betwen 1315 to 1397 use $split for replace '/' between year/mounth/day |
-| ``` Faker::time($from=0, $to=23, $split=':') ``` | Return a random time betwen 00:00 to 23:59 use $split for replace ':' between HH:MM:SS |
+| ``` Faker::time($from=0, $to=23, $split=':') ``` | Return a random time betwen 00:00:00 to 23:59:59 use $split for replace ':' between HH:MM:SS |
 | ``` Faker::dateTime($from=1315, $to=1397, $dateSplit='/', $timeSplit=':') ``` | Return a random dateTime betwen 1315/01/01 00:00:00 to 1397/12/30 23:59:59 |
 | ``` Faker::address() ``` | Return a random postal address |
 | ``` Faker::city() ``` | Return a random city of iran name |
