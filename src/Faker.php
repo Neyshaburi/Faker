@@ -30,11 +30,12 @@ class Faker
 
         if (is_array($object)) {
             $array = $object;
-            $name  = array_rand($object);
         } elseif (is_string($object)) {
             $array = $this->objects[$object];
-            $name  = array_rand($array);
         }
+
+        shuffle($array);
+        $name  = array_rand($array);
 
         return string($array[$name]);
     }
@@ -70,13 +71,10 @@ class Faker
      * $count is length of email address string
      * if not set parametr to method auto return random between 6-10 length string
      */
-    public function email($count = null)
+    public function email()
     {
-        if (!is_null($count)) {
-            $mail = strtolower(str_random($count));
-        } else {
-            $mail = strtolower(str_random(rand(6, 10)));
-        }
+        $mail = $this->getRandomKey('enName') . range(1930, 2010);
+        $mail = strtolower($mail);
         $email = $mail . $this->getRandomKey('email');
         return $email;
     }
@@ -92,6 +90,20 @@ class Faker
     /**
      * return a random word
      */
+    public function words($count = 2)
+    {
+        $words = '';
+        for ($i=0; $i<$count; $i++)
+        {
+            if ($words == '')
+                $words = $this->getRandomKey('word');
+            else
+                $words = ' ' . $this->getRandomKey('word');
+        }
+
+        return $words;
+    }
+
     public function word()
     {
         return $this->getRandomKey('word');
@@ -187,13 +199,12 @@ class Faker
      * tlds are like com , net , ir , co , co.ir , ...
      * random web protocol http & https
      */
-    public function domain($length = null)
+    public function domain()
     {
-        if (!is_null($length)) {
-            $domainName = strtolower(str_random($length));
-        } else {
-            $domainName = strtolower(str_random(rand(5, 8)));
-        }
+        //enName
+        $domainName = $this->getRandomKey('enName');
+        $domainName = strtolower($domainName);
+
         $domain = $this->getRandomKey('protocol') . '://' .'www.'. $domainName . '.' . $this->getRandomKey('domain');
         return $domain;
 
@@ -265,6 +276,61 @@ class Faker
      */
     public function address()
     {
+        $i = rand(0, 7);
+        $pre = ['شهید ', 'دکتر ', 'پورفسور ', 'آیت الله ', 'زنده یاد '];
+        $blv = 'بلوار ';
+        $str = 'خیابان ';
+        $lane = ' کوچه ';
+        $bl = ' ساختمان ';
+        $num = ' پلاک ';
+        $flo = ' طبقه ';
+        $unit = ' واحد ';
+
+
+        switch ($i) {
+            case 0:
+                return  $blv . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .' '.
+                        $str . $this->getRandomKey($pre) .' '. $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey($pre) .' '. $this->getRandomKey('lastName') .
+                        $bl . $this->getRandomKey('flower') .
+                        $num . randomNumber(3) .' '. $flo . randomNumber(1) .' '.
+                        $unit . randomNumber(1);
+                break;
+            case 1:
+                return  $blv . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .' '.
+                        $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey('flower') .
+                        $num . randomNumber(3) .' '. $flo . randomNumber(1) .' '.
+                        $unit . randomNumber(1);
+                break;
+            case 2:
+                return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $num . randomNumber(2) .' '. $flo . randomNumber(1) .' '.
+                        $unit . randomNumber(1);
+                break;
+            case 3:
+                return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey('flower') .
+                        $num . randomNumber(2) .' '. $flo . randomNumber(1) .' '.
+                        $unit . randomNumber(1);
+                break;
+            case 4:
+                return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $num . randomNumber(2);
+                break;
+            case 5:
+                return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . $this->getRandomKey('flower') .
+                        $num . randomNumber(2);
+                break;
+            case 6 || 7:
+                return  $str . $this->getRandomKey('flower') .
+                        $lane . 'شهید ' . $this->getRandomKey('lastName') .
+                        $num . randomNumber(2);
+                break;
+        }
         return $this->getRandomKey('address');
     }
 
