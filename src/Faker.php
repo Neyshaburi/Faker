@@ -84,7 +84,7 @@ class Faker
             if ($words == '')
                 $words = $this->getRandomKey('word');
             else
-                $words = ' ' . $this->getRandomKey('word');
+                $words .= ' ' . $this->getRandomKey('word');
         }
 
         return $words;
@@ -128,10 +128,10 @@ class Faker
             $paragraphs = '';
             for ($i = 0; $i < $count; $i++){
                 if($i == 0)
-                    $paragraphs = paragraph();
+                    $paragraphs = $this->paragraph();
 
 
-                $paragraphs .= '<br/>' . paragraph();
+                $paragraphs .= '<br/>' . $this->paragraph();
 
             }
             return $paragraphs;
@@ -158,7 +158,7 @@ class Faker
      */
     public function telephone()
     {
-        $prefix = $this->getRandomKey('telephone');
+        $prefix = $this->getRandomKey('tellphone');
         return string('+98' . $prefix . randomNumber(7));
     }
 
