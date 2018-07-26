@@ -64,20 +64,6 @@ class Faker
     {
         return $this->firstName() .' '. $this->lastName();
     }
-    /**
-     * return a random email address .
-     * it's a random and fake email address not ussable
-     * gmail , yahoo , msn , hotmail domain
-     * $count is length of email address string
-     * if not set parametr to method auto return random between 6-10 length string
-     */
-    public function email()
-    {
-        $mail = $this->getRandomKey('enName') . range(1930, 2010);
-        $mail = strtolower($mail);
-        $email = $mail . $this->getRandomKey('email');
-        return $email;
-    }
 
     /**
      * return a random of job title
@@ -201,13 +187,28 @@ class Faker
      */
     public function domain()
     {
-        //enName
         $domainName = $this->getRandomKey('enName');
         $domainName = strtolower($domainName);
 
         $domain = $this->getRandomKey('protocol') . '://' .'www.'. $domainName . '.' . $this->getRandomKey('domain');
         return $domain;
 
+    }
+
+    /**
+     * return a random email address .
+     * it's a random and fake email address not ussable
+     * gmail , yahoo , msn , hotmail domain
+     * $count is length of email address string
+     * if not set parametr to method auto return random between 6-10 length string
+     */
+    public function email()
+    {
+        $mail = $this->getRandomKey('enName');
+        $mail = strtolower($mail);
+        $mail .= range(1930, 2010);
+        $email = $mail . $this->getRandomKey('email');
+        return $email;
     }
 
     /**
@@ -277,7 +278,7 @@ class Faker
     public function address()
     {
         $i = rand(0, 7);
-        $pre = ['شهید ', 'دکتر ', 'پورفسور ', 'آیت الله ', 'زنده یاد '];
+        $pre = ['شهید ', 'دکتر ', 'آیت الله ', 'زنده یاد ', 'استاد '];
         $blv = 'بلوار ';
         $str = 'خیابان ';
         $lane = ' کوچه ';
@@ -291,33 +292,33 @@ class Faker
             case 0:
                 return  $blv . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .' '.
                         $str . $this->getRandomKey($pre) .' '. $this->getRandomKey('lastName') .
-                        $lane . $this->getRandomKey($pre) .' '. $this->getRandomKey('lastName') .
+                        $lane . 'شهید '. $this->getRandomKey('lastName') .
                         $bl . $this->getRandomKey('flower') .
-                        $num . randomNumber(3) .' '. $flo . randomNumber(1) .' '.
+                        $num . randomNumber(3) . $flo . randomNumber(1) .
                         $unit . randomNumber(1);
                 break;
             case 1:
                 return  $blv . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .' '.
                         $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
                         $lane . $this->getRandomKey('flower') .
-                        $num . randomNumber(3) .' '. $flo . randomNumber(1) .' '.
+                        $num . randomNumber(3) . $flo . randomNumber(1) .
                         $unit . randomNumber(1);
                 break;
             case 2:
                 return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
-                        $lane . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
-                        $num . randomNumber(2) .' '. $flo . randomNumber(1) .' '.
+                        $lane . 'شهید ' . $this->getRandomKey('lastName') .
+                        $num . randomNumber(2) . $flo . randomNumber(1) .
                         $unit . randomNumber(1);
                 break;
             case 3:
                 return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
                         $lane . $this->getRandomKey('flower') .
-                        $num . randomNumber(2) .' '. $flo . randomNumber(1) .' '.
+                        $num . randomNumber(2) . $flo . randomNumber(1) .
                         $unit . randomNumber(1);
                 break;
             case 4:
                 return  $str . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
-                        $lane . $this->getRandomKey($pre) . $this->getRandomKey('lastName') .
+                        $lane . 'شهید ' . $this->getRandomKey('lastName') .
                         $num . randomNumber(2);
                 break;
             case 5:
