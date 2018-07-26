@@ -206,7 +206,7 @@ class Faker
     {
         $mail = $this->getRandomKey('enName');
         $mail = strtolower($mail);
-        $mail .= range(1930, 2010);
+        $mail .= rand(1930, 2010);
         $email = $mail . $this->getRandomKey('email');
         return $email;
     }
